@@ -78,6 +78,6 @@ def get_article():
     data['title']=titles
     data['summary']=summaries
     data['content']=contents
-    data.to_csv('raw_article.csv',index=False)
+    data.to_csv('36kr_articles.csv',index=False)
 
 get_article()
