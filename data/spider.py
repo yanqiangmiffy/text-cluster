@@ -14,26 +14,28 @@ def get_article_info(per_page,page_num):
     :param page_num:
     :return:
     """
-    for i in range(1,page_num+1):
-        # 获取文章基本信息
-        url='https://36kr.com/api/search-column/mainsite?per_page={}&page={}'.format(per_page,i)
-        res=requests.get(url)
-        items=res.json()['data']['items']
-        with open('36kr.csv','w',encoding='utf-8',newline='') as out_data:
-            csv_writer=csv.writer(out_data)
-            csv_writer.writerow(('id','summary','column_name','title','cover',
-                                 'published_at','extraction_tags','favourite_num'))
+    with open('36kr.csv', 'w', encoding='utf-8', newline='') as out_data:
+        csv_writer = csv.writer(out_data)
+        csv_writer.writerow(('id', 'summary', 'column_name', 'title', 'cover',
+                             'published_at', 'extraction_tags', 'favourite_num'))
+
+        for i in range(1,page_num+1):
+            # 获取文章基本信息
+            url='https://36kr.com/api/search-column/mainsite?per_page={}&page={}'.format(per_page,i)
+            res=requests.get(url)
+            items=res.json()['data']['items']
+            print(len(items),items)
             for item in items:
                 if 'favourite_num' not in items:
-                    item['favourite_num']=0
-                csv_writer.writerow((item['id'],item['summary'].replace('\n',''),
-                                    item['column_name'],item['title'],
-                                    item['cover'],item['published_at'],
-                                    item['extraction_tags'],item['favourite_num']))
-        print("已经爬取了{}条文章".format(i * per_page))
-        time.sleep(5)
+                    item['favourite_num'] = 0
+                csv_writer.writerow((item['id'], item['summary'].replace('\n', ''),
+                                     item['column_name'], item['title'],
+                                     item['cover'], item['published_at'],
+                                     item['extraction_tags'], item['favourite_num']))
+            print("已经爬取了{}条文章".format(i * per_page))
+            time.sleep(1)
 
-get_article_info(300,6)
+# get_article_info(300,6)
 
 
 def get_article():

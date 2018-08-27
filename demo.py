@@ -16,8 +16,30 @@ from zhon import hanzi
 #
 # print(is_chinese("中国"))
 
-import re
-text="（ID:sykong_com），作者 欣欣、Ben。36氪经授权转载。</p><p>国内的游戏厂商在占领市场方面一直保持极强的狼性，"
-pattern=re.compile(r'[^\u4e00-\u9fa5'+hanzi.punctuation+'0-9+]') # 中文的编码范围是：\u4e00-\u9fa5 这里保留了中文的标点符号和数字
+# import re
+# text="（ID:sykong_com），1作者 欣欣、Ben。36氪经授权转载。</p><p>国内的游戏厂商在占领市场方面一直保持极强的狼性，"
+# pattern=re.compile(r'[^\u4e00-\u9fa5'+hanzi.punctuation+'0-9+]') # 中文的编码范围是：\u4e00-\u9fa5 这里保留了中文的标点符号和数字
+#
+# print(re.sub(pattern,'',text))
 
-print(re.sub(pattern,'',text))
+
+
+def loadDataset():
+    '''导入文本数据集'''
+    f = open('36krout.txt','r',encoding='utf-8')
+    dataset = []
+    lastPage = ''
+    for line in f.readlines():
+        if '< title >' in line and '< / title >' in line:
+            if lastPage:
+                dataset.append(lastPage)
+            lastPage = line
+        else:
+            lastPage += line
+    if lastPage:
+        dataset.append(lastPage)
+    f.close()
+    return dataset
+
+dataset=loadDataset()
+print(dataset)
