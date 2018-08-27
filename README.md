@@ -19,6 +19,7 @@ K-means算法是输入聚类个数k，以及包含 n个数据对象的数据库�
 k-means算法是一种基于样本间相似性度量的间接聚类方法，属于非监督学习方法。此算法以k为参数，把n 个对象分为k个簇，以使簇内具有较高的相似度，而且簇间的相似度较低。
 
 ## 中心点的个数从3到80对应的误差值的曲线
+![](https://github.com/yanqiangmiffy/text-cluster/blob/master/assets/result.png)
 
 ## 10个簇的数据集的个数
 ```text
