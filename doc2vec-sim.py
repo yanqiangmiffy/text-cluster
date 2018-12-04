@@ -108,8 +108,8 @@ def cluster(articles):
     kmean_model.fit(infered_vectors_list)
     labels = kmean_model.predict(infered_vectors_list[0:100])
     cluster_centers = kmean_model.cluster_centers_
-    with open('classification.txt','w',encoding='utf-8') as out_f:
-        for i in range(100):
+    with open('model/classification.txt','w',encoding='utf-8') as out_f:
+        for i in range(1800):
             string = ""
             text = articles[i][0]
             for word in text:
@@ -121,6 +121,6 @@ def cluster(articles):
 
 if __name__ == '__main__':
     articles = load_articles()
-    train_doc2vec(articles)
-    most_sim_docs(articles)
+    # train_doc2vec(articles)
+    # most_sim_docs(articles)
     cluster(articles)
