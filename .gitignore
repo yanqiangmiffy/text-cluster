@@ -1,0 +1,6 @@
+.idea/
+*.zip
+.git/
+.ipynb_checkpoints/
+model/
+data/36kr_articles.pkl

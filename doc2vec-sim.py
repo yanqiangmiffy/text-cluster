@@ -121,6 +121,6 @@ def cluster(articles):
 
 if __name__ == '__main__':
     articles = load_articles()
-    # train_doc2vec(articles)
+    train_doc2vec(articles)
     most_sim_docs(articles)
     cluster(articles)
