@@ -81,7 +81,7 @@ def train(X, vectorizer, true_k=10, mini_batch=False, show_label=False):
         # print(vectorizer.get_stop_words())
         for i in range(true_k):
             print("Cluster %d" % i, end='')
-            for ind in order_centroids[i, :100]:
+            for ind in order_centroids[i, :10]:
                 print(' %s' % terms[ind], end='')
             print()
     result = list(k_means.predict(X))

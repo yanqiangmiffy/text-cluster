@@ -79,6 +79,7 @@ def most_sim_docs(articles):
     """
     model_dm = Doc2Vec.load("model/doc2vec.model")
     test_text=articles[random.randint(1,1800)]
+    print(test_text)
     inferred_vector_dm = model_dm.infer_vector(test_text)
     # print(inferred_vector_dm)
     sims = model_dm.docvecs.most_similar([inferred_vector_dm], topn=10)
@@ -122,5 +123,5 @@ def cluster(articles):
 if __name__ == '__main__':
     articles = load_articles()
     # train_doc2vec(articles)
-    # most_sim_docs(articles)
-    cluster(articles)
+    most_sim_docs(articles)
+    # cluster(articles)
