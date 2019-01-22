@@ -106,7 +106,7 @@ def cluster(articles):
     print("train k-mean model ...")
     kmean_model=KMeans(n_clusters=8)
     kmean_model.fit(infered_vectors_list)
-    labels = kmean_model.predict(infered_vectors_list[0:100])
+    labels = kmean_model.predict(infered_vectors_list[0:1800])
     cluster_centers = kmean_model.cluster_centers_
     with open('model/classification.txt','w',encoding='utf-8') as out_f:
         for i in range(1800):
